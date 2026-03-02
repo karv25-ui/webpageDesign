@@ -1,0 +1,1 @@
+/* This is the Blog component for the website/app */

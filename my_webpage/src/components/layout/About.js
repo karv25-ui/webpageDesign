@@ -1,0 +1,1 @@
+/* This is the About component for the website/app */
