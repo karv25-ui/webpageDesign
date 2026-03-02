@@ -25,17 +25,21 @@ function App() {
 export default App; */ /*-- Reference code from create-react-app, modified to fit the webpage design --*/
 import KapturedMoment from './Kaptured Moment .png';
 import './App.css';
+import Nav from './components/Nav';
 
 function App() {
   return (
     <div className="App">
+    <div className="background">
       <header className="header">
       <img src={KapturedMoment} alt="Kaptured Moment" className="logo" />
         </header>
        <div className="content">
+        <Nav />
         </div>
        <div className="footer">
         </div>
+      </div>
     </div>
   );
 }
