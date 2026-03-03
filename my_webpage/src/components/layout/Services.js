@@ -44,7 +44,34 @@ Services include:
 *Raw images may be available* upon request. This can be discussed upon request/Contact.js*
 *Edited images will be delivered in high resolution digital format. There is no limit for the amount of edited images. This can be discussed upon request/Contact.js*
 
-- Videography
+# Videography
+- Music Videos
+* Short or long form music videos available. This can be discussed upon request/Contact.js*
+* 2 location minimum for videography services. This can be discussed upon request/Contact.js*
+* Promo video for music videos available. This can be discussed upon request/Contact.js*
+* Raw footage may be available upon request. This can be discussed upon request/Contact.js*
+* Edited videos will be delivered in high resolution digital format. This can be discussed upon request/Contact.js*
+* 50% deposit required for music video services. This can be discussed upon request/Contact.js*
+* Final payment required before or after the music video services is completed. This can be discussed upon request/Contact.js*
+
+- Short Films
+* Short films available. This can be discussed upon request/Contact.js*
+* 2 location minimum for videography services. This can be discussed upon request/Contact.js*
+* Raw footage may be available upon request. This can be discussed upon request/Contact.js*
+* Edited videos will be delivered in high resolution digital format. This can be discussed upon request/Contact.js*
+* 50% deposit required for short film services. This can be discussed upon request/Contact.js*
+* Final payment required before or after the short film services is completed. This can be discussed upon request/Contact.js*
+* Must have a script or a clear idea of the short film. This can be discussed upon request/Contact.js*
+* Kaptured Moment can provide a production team for the short film. This can be discussed upon request/Contact.js*
+* Kaptured Moment can provide equipment for the short film. This can be discussed upon request/Contact.js*
+* Kaptured Moment can provide a location for the short film. This can be discussed upon request/Contact.js*
+* Budget must be discussed before any short film services are provided. This can be discussed upon request/Contact.js*
+
+- Music Video Footage Only
+* Only music video footage available. This can be discussed upon request/Contact.js*
+* Not reliable for editing services. This can be discussed upon request/Contact.js*
+
+
 - Event Coverage
 - Commercial
 - Real Estate
