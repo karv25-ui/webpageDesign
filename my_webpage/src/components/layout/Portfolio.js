@@ -1,10 +1,18 @@
 /* 
-This is the Portfolio component for the website/app. This will showcase the work of Kaptured Moment. 
+-- This is the sturcture for the Portfolio component for the website/app. This will showcase the work of Kaptured Moment. --
 
 -Portfolio Layout
 The portfolio will be displayed in a grid or carousel format. Each project will have a title, description, and image. 
 Each project will be clickable to show more details. The animation will be smooth & appealing. 
-Each project will be displayed like a card with a hover effect. Projects can be grouped by category.
+Each project will be displayed like a card with a hover effect. *Projects can be grouped by category.*
+Each project will have a unique design or theme to help users visually distinguish between the different types of work. The design will be consistent with the overall aesthetic of the website/app.
+Each project will have a clear description to helps users understand the story, concept, inpsiration, etc behind the project. Description will be entertaining to engange the users to make them explore the project further.
+*Each project will have a "View Project" button that will take users to a dedicated page for the porject, where they can see more images, *videos/bts*, and details about the project.* 
+The project page will have a consistent design with the overall aesthetic of the website/app, and will include a clear call-to-action to encourage users to explore more projects or contact Kaptured Moment for inquiries.
+Users will be able to rate or leave feedback on each project to help Kaptured Moment understand what resonates with the audience and improve future work.
+^^^ This will also help build a community around the portfolio and encourage user engagement.^^^
+^^^ Users will be able to share projects on social media to help increase visibility and reach for Kaptured Moment's work.^^^
+^^^ Users will have the option to leave comments/feedback annonymously or with their name to encourage more honest and constructive feedback.^^^
 
 - Categories
 *Will be displayed in a sidebar or top navigation bar*
