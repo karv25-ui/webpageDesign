@@ -9,6 +9,9 @@ The service page will have a consistent design with the overall aesthetic of the
 
 Each service will have *2 buttons*: "Learn More" & "Contact Us"/"Book Now" to encourage a call-to-action and make it easy for users to inquire about the service or book a session with Kaptured Moment.
 
+Opening statement for the Services page:
+"Keep your moments kaptured with Kaptured Moment. Creating memeories that last a lifetime, offering a variety of photographny & videography to fit your needs."
+
 Services include:
 - Portraits (1 on 1, Couples, or 2 people maximum.)
 *2 hour minimum for photography services. This can be discussed upon request/Contact.js*
@@ -71,6 +74,27 @@ Services include:
 * Only music video footage available. This can be discussed upon request/Contact.js*
 * Not reliable for editing services. This can be discussed upon request/Contact.js*
 
+- Editing Services
+* Editing services available for both photography and videography. This can be discussed upon request/Contact.js*
+* Raw footage or images must be provided for editing services. This can be discussed upon request/Contact.js*
+* Edited videos or images will be delivered in high resolution digital format. This can be discussed upon request/Contact.js*
+* Pricing for editing services will depend on the amount of footage or images to be edited. This can be discussed upon request/Contact.js*
+* 50% deposit required for editing services. This can be discussed upon request/Contact.js*
+* Final payment is required before the editing services are completed. This can be discussed upon request/Contact.js*
+
+- BTS (Behind the Scenes) Footage
+* BTS footage avaiilable for both photography and videography services. This can be discussed upon request/Contact.js*
+* Editied videos and images will be delivered in high resolution digitial format. This can be discussed upon request/Contact.js*
+* Pricing for BTS footage will depend on the amount of footage or images to be edited. This can be discussed upon request/Contact.js*
+* 50% deposit required for BTS footage services. This can be discussed upon request/Contact.js*
+* Final payment is required before or after the BTS footage services are completed. This can be discussed upon request/Contact.js*
+
+- Short Form Videos (for social media, etc)
+* Short form videos available for social media, etc. This can be discussed upon request/Contact.js*
+* 4 short form videos minimum for short form video services. This can be discussed upon request/Contact.js*
+* Video duration requirement is 15 seconds to 1 minute for short form video services. (Anything longer must be discussed & will amount to extra charges) This can be discussed upon request/Contact.js*
+* No location minimum for short form video services. This can be discussed upon request/Contact.js*
+*
 
 - Event Coverage
 - Commercial
