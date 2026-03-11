@@ -48,3 +48,7 @@ function App() {
 }
 
 export default App;
+
+/* This is the main App component for the Kaptured Moment website/app.
+* The App component serves as the root component of the application and is responsible for rendering the overall structure and layout of the website/app.
+*/
