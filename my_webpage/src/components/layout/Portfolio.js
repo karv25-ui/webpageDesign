@@ -26,7 +26,20 @@ Each category will have a unique design or color scheme to help users visually d
 
 In the portfoilio, there will be categories to help users navigate through the different types of work. The categories will include:
 - Photography
+* This category will contain not all but most of the photography work of Kaptured Moment. 
+* This will include a variety of photography styles, such as portrait, fashion, lifestyle, etc.
+* Each project in this category will have a unique design or theme to help users visually distinguish between the different types of photography work.
+* Each project will have a clear description to helps users understand the story, concept, inpsiration, etc behind the project. Description will be entertaining to engange the users to make them explore the project further.
+* Each project will be displayed either as a slideshow, cards or some other visual presentation that will be pleasing to the user.
+* Users will have the option to 'click to enlarge' on each photo & will display as a lightbox. Under the photo can either contain the description of the project/photo or just the title of the project/photo.
+* Each photo will be displayed to it's highest quality. 
 - Videography
+* This category will contain all of the videography work of Kaptured Moment. 
+* This category will contain music videos, highlight videos, short films, short form content, etc.
+* This category will be broken into subcategories that're listed above ^^^
+* In each video, users will be able to have full control and be able to adjust the controls of the video to their preference. 
+* Each video will be displayed to it's highest quality.
+
 - Event Coverage
 - Commercial
 - Personal Projects
