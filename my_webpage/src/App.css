@@ -54,3 +54,12 @@
   color: white;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font: cursive;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
