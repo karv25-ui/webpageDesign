@@ -34,15 +34,43 @@ function Photography() {
 */
 
 function App() {
+/* This displays a friendly message according to each day of the week, as well as greeting based on the time of the day. */
+  const time = new Date();
+  const day = time.toLocaleString("en-US", { weekday: "long"});
+  const hours = time.getHours();
+  const morning = hours >= 6 && hours < 12;
+  const afternoon = hours >= 12 && hours < 18;
+  const evening = hours >= 18 && hours < 24;
+  const night = hours >= 0 && hours < 6;
+
+  let dayMessage;
+  if (day.toLowerCase() === "monday") {
+    dayMessage = `Happy ${day}! Start your week off with a smile! Start with the best foot forward! ❤️`;
+  } else if (day.toLowerCase() === "tuesday") {
+    dayMessage = `Happy ${day}! Keep pushing through you got this! You're getting closer to the weekend! 😚`;
+  } else if (day.toLowerCase() === "wednesday") {
+    dayMessage = `Happy ${day}! Halfway there! It's HUMP DAY! Stay strong! 💪🏾`;
+  } else if (day.toLowerCase() === "thursday") {
+    dayMessage = `Happy ${day}! YOu're almost there, one more day until the weekend! 😁`
+  } else if (day.toLowerCase() === "friday") {
+    dayMessage = `Happy ${day}! It's finally Friday! The weekend is here! Time to relax and enjoy! 🥳`;
+  } else {
+    dayMessage = `It's ${day}! Enjoy your weekend, make the best out of it & more importantly stay blessed! 🙏🏾`;
+  }
+
   return (
     
     /* Main App Page */
     <div className="App">
     <div className="background">
+    {/* Header if the main page, with logo as the landing page button to enter into the website */}
+    {/* The greeting and dayMessage should be displayed with the header, or maybe inside the landing page... stiil comptemplating. */}
       <header className="header">
       <img src={KapturedMoment} alt="Kaptured Moment" className="logo" />
         </header>
        <div className="landing-page">
+        <h1></h1>
+        <h2></h2>
         {/* This is where the welcome message will be displayed on landing page, along with a short intro or something to draw the users attention and drag them into exploring the webapo. */}
         {/*
         <nav>
