@@ -41,6 +41,7 @@
 .logo {
   height: 7vmin;
   pointer-events: none;
+  align-items: center;
 }
 
 .background {

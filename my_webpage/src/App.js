@@ -51,7 +51,7 @@ function App() {
   } else if (day.toLowerCase() === "wednesday") {
     dayMessage = `Happy ${day}! Halfway there! It's HUMP DAY! Stay strong! 💪🏾`;
   } else if (day.toLowerCase() === "thursday") {
-    dayMessage = `Happy ${day}! YOu're almost there, one more day until the weekend! 😁`
+    dayMessage = `Happy ${day}! You're almost there, one more day until the weekend! 😁`
   } else if (day.toLowerCase() === "friday") {
     dayMessage = `Happy ${day}! It's finally Friday! The weekend is here! Time to relax and enjoy! 🥳`;
   } else {
@@ -67,10 +67,13 @@ function App() {
     {/* The greeting and dayMessage should be displayed with the header, or maybe inside the landing page... stiil comptemplating. */}
       <header className="header">
       <img src={KapturedMoment} alt="Kaptured Moment" className="logo" />
+      {/* Style the greeting & dayMessage to be more appealing.
+      Make it like the words are typing across the screen upon loading. */}
+        <h6 className="greeting">
+          {morning ? "Good Morning" : afternoon ? "Good Afternoon" : evening ? "Good Evening" : night ? "Good Night" : "Greetings!"} {dayMessage}
+        </h6>
         </header>
        <div className="landing-page">
-        <h1></h1>
-        <h2></h2>
         {/* This is where the welcome message will be displayed on landing page, along with a short intro or something to draw the users attention and drag them into exploring the webapo. */}
         {/*
         <nav>
