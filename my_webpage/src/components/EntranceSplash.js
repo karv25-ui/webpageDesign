@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import KapturedMoment from './Kaptured Moment .png';
+import KapturedMoment from './KapturedMoment.png';
 import './EntranceSplash.css';
 
 const DAY_MESSAGES = {

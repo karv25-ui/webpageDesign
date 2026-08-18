@@ -43,7 +43,7 @@ function Home() {
           Welcome to <em>Kaptured Moment</em>
         </h1>
         <p className="homepage-description">
-          Discover the art of photography and capture your special moments.
+            
         </p>
         <Link to="/portfolio" className="kaptured-button">
           <span className="kaptured-button-ring" aria-hidden="true" />

@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import KapturedMoment from './Kaptured Moment .png';
+import { Routes, Route, Link } from 'react-router-dom';
+import KapturedMoment from './components/KapturedMoment.png';
 import Home from './components/Home';
-import EntranceSplash from './EntranceSplash';
+import EntranceSplash from './components/EntranceSplash';
 import './App.css';
 
-/*Placeholder until Portfolio.js exists — keeps the "Explore My Portfolio"
-button from linking to a blank route in the meantime. */
-
+// Placeholder until Portfolio.js exists — keeps the "Explore My Portfolio"
+// button from linking to a blank route in the meantime.
 function Portfolio() {
   return (
     <div className="portfolio-placeholder">
@@ -41,7 +40,7 @@ function App() {
   const [entered, setEntered] = useState(false);
 
   return (
-    <BrowserRouter>
+    <>
       <AppShell>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -50,7 +49,7 @@ function App() {
       </AppShell>
 
       {!entered && <EntranceSplash onEnter={() => setEntered(true)} />}
-    </BrowserRouter>
+    </>
   );
 }
 
