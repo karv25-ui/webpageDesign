@@ -1,66 +1,86 @@
-/*.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@300;400;500&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.App {
+  --bg: #1a140f;
+  --bg-alt: #241a12;
+  --cream: #f3e9d8;
+  --amber: #ff7a3d;
+  --gold: #d4a054;
+  --muted: #a4907c;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-*/ /*-- Reference code from create-react-app, not needed for my webpage design --*/
-
-.logo {
-  height: 7vmin;
-  pointer-events: none;
-  align-items: center;
 }
 
 .background {
-  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 30% 0%, var(--bg-alt) 0%, var(--bg) 65%);
+  color: var(--cream);
+  font-family: 'Work Sans', sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 24px 40px;
+  border-bottom: 1px solid rgba(212, 160, 84, 0.15);
+}
+
+.logo-link {
+  display: inline-flex;
+  text-decoration: none;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.logo-link:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 10px rgba(255, 122, 61, 0.35));
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.landing-page {
+  flex: 1;
+  display: flex;
+}
+
+.landing-page > * {
+  flex: 1;
+}
+
+.portfolio-placeholder {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  font-family: 'Fraunces', serif;
+}
+.portfolio-placeholder p {
+  font-family: 'Work Sans', sans-serif;
+  color: var(--muted);
+  font-weight: 300;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  font: cursive;
-  align-items: center;
-  justify-content: center;
+  padding: 20px;
   text-align: center;
+  border-top: 1px solid rgba(212, 160, 84, 0.15);
+}
+.footer p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 20px 24px;
+  }
 }
