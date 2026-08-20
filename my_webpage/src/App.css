@@ -29,12 +29,18 @@
 
 .logo-link {
   display: inline-flex;
-  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   transition: transform 0.25s ease, filter 0.25s ease;
 }
 .logo-link:hover {
   transform: scale(1.04);
   filter: drop-shadow(0 0 10px rgba(255, 122, 61, 0.35));
+}
+.logo-link:active {
+  transform: scale(0.95);
 }
 
 .logo {
@@ -79,8 +85,32 @@
   letter-spacing: 0.05em;
 }
 
+/* Shared flash overlay for both directions (splash → main, main → splash).
+   A fresh instance mounts via `key` on every click so the animation always
+   restarts cleanly, even from rapid repeat clicks. */
+.camera-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: #fffdf6;
+  pointer-events: none;
+  animation: cameraFlash 0.8s ease-out forwards;
+}
+
+@keyframes cameraFlash {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  75% { opacity: 0.5; }
+  90% { opacity: 0.3; }
+  100% { opacity: 0; }
+}
+
 @media (max-width: 600px) {
   .header {
     padding: 20px 24px;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .camera-flash { animation: none; opacity: 0; }
 }
