@@ -1,37 +1,85 @@
-import { Route, Routes, Link } from 'react-router-dom';
-import Home from './Home';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import './Nav.css';
 
-function Nav() {
-    return (
-       <> 
-       <nav className ="crumbs">
-            <ul> 
-                <li><Link to="/">Home</Link></li>
-                {/*}
-               
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
-                <li><Link to="/blog">Blog</Link></li>
-                <li><Link to="/portfolio">Portfolio</Link></li>
-                <li><Link to="/services">Services</Link></li>
-                <li><Link to="/testimonials">Testimonials</Link></li>
-                */}
-            </ul>
-        </nav>
-        <Routes>
-            <Route path="/" element={<Home />} />
-            {/*
-            
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/testimonials" element={<Testimonials />} />
-            */}
-        </Routes>
-        </>
-    )
+const LINKS = [
+  { to: '/', label: 'Home' },
+  { to: '/portfolio', label: 'Portfolio' },
+  { to: '/contact', label: 'Contact' },
+];
+
+function Nav({ onNavigate }) {
+  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleRef = useRef(null);
+
+  // Close the mobile menu once the route has actually changed (after the
+  // flash-delayed navigation completes), so it never stays open mid-swap.
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  // Escape closes the mobile menu and returns focus to the toggle button —
+  // keyboard users should never get stranded inside an open menu.
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const handleKey = (e) => {
+      if (e.key === 'Escape') {
+        setMenuOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, [menuOpen]);
+
+  // Real <Link>s underneath (correct href, works with cmd/ctrl-click to
+  // open in a new tab, fully keyboard operable) — we only intercept plain
+  // left-clicks to route them through the flash transition instead of an
+  // instant swap.
+  const handleLinkClick = (e, path) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+      return;
+    }
+    e.preventDefault();
+    onNavigate(path);
+  };
+
+  return (
+    <nav className="nav" aria-label="Primary">
+      <button
+        type="button"
+        ref={toggleRef}
+        className="nav-toggle"
+        aria-expanded={menuOpen}
+        aria-controls="primary-nav-menu"
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        onClick={() => setMenuOpen((open) => !open)}
+      >
+        <span className="nav-toggle-bar" aria-hidden="true" />
+        <span className="nav-toggle-bar" aria-hidden="true" />
+        <span className="nav-toggle-bar" aria-hidden="true" />
+      </button>
+
+      <ul id="primary-nav-menu" className={`nav-menu ${menuOpen ? 'nav-menu--open' : ''}`}>
+        {LINKS.map(({ to, label }) => {
+          const isActive = location.pathname === to;
+          return (
+            <li key={to}>
+              <Link
+                to={to}
+                onClick={(e) => handleLinkClick(e, to)}
+                aria-current={isActive ? 'page' : undefined}
+                className={`nav-link ${isActive ? 'nav-link--active' : ''}`}
+              >
+                {label}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  );
 }
 
 export default Nav;

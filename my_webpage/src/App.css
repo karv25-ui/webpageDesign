@@ -21,8 +21,10 @@
 }
 
 .header {
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 24px 40px;
   border-bottom: 1px solid rgba(212, 160, 84, 0.15);
 }
@@ -41,6 +43,11 @@
 }
 .logo-link:active {
   transform: scale(0.95);
+}
+.logo-link:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .logo {
@@ -85,24 +92,45 @@
   letter-spacing: 0.05em;
 }
 
-/* Shared flash overlay for both directions (splash → main, main → splash).
-   A fresh instance mounts via `key` on every click so the animation always
-   restarts cleanly, even from rapid repeat clicks. */
-.camera-flash {
+/* Shared flash overlay for every shutter moment (entrance toggle, nav
+   clicks). A fresh instance mounts via `key` on each trigger so the
+   animation restarts cleanly even on rapid repeat clicks. */
+
+
+/* Shared lens-shutter transition for every "shutter moment" in the app
+   (entrance toggle, nav clicks). A fresh instance mounts via `key` on each
+   trigger so the animation restarts cleanly even on rapid repeat clicks.
+   Shape: an 8-point octagon (echoing an 8-blade iris) that grows from a
+   center point to full coverage, holds, then shrinks back to a point —
+   with a slow rotation throughout so it reads as blades twisting rather
+   than a shape just scaling. */
+.lens-shutter {
   position: fixed;
   inset: 0;
   z-index: 300;
-  background: #fffdf6;
   pointer-events: none;
-  animation: cameraFlash 0.8s ease-out forwards;
+  background: radial-gradient(circle at 50% 50%, var(--bg-alt) 0%, var(--bg) 75%);
+  transform-origin: 50% 50%;
+  animation: lensShutter 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
-@keyframes cameraFlash {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  75% { opacity: 0.5; }
-  90% { opacity: 0.3; }
-  100% { opacity: 0; }
+@keyframes lensShutter {
+  0% {
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    transform: rotate(0deg);
+  }
+  30% {
+    clip-path: polygon(200% 50%, 156.07% 156.07%, 50% 200%, -56.07% 156.07%, -100% 50%, -56.07% -56.07%, 50% -100%, 156.07% -56.07%);
+    transform: rotate(35deg);
+  }
+  55% {
+    clip-path: polygon(200% 50%, 156.07% 156.07%, 50% 200%, -56.07% 156.07%, -100% 50%, -56.07% -56.07%, 50% -100%, 156.07% -56.07%);
+    transform: rotate(45deg);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    transform: rotate(80deg);
+  }
 }
 
 @media (max-width: 600px) {
@@ -112,5 +140,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .camera-flash { animation: none; opacity: 0; }
+  .lens-shutter { animation: none; clip-path: none; opacity: 0; }
 }
