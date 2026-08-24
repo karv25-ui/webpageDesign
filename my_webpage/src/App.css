@@ -92,9 +92,23 @@
   letter-spacing: 0.05em;
 }
 
-/* Shared flash overlay for every shutter moment (entrance toggle, nav
-   clicks). A fresh instance mounts via `key` on each trigger so the
-   animation restarts cleanly even on rapid repeat clicks. */
+/* Camera-flash — used only for the entrance-splash toggle (header logo /
+   splash logo). A fresh instance mounts via `key` on each trigger. */
+.camera-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: #fffdf6;
+  pointer-events: none;
+  animation: cameraFlash 0.7s ease-out forwards;
+}
+
+@keyframes cameraFlash {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  60% { opacity: 1; }
+  100% { opacity: 0; }
+}
 
 
 /* Shared lens-shutter transition for every "shutter moment" in the app
@@ -109,27 +123,22 @@
   inset: 0;
   z-index: 300;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 50%, var(--bg-alt) 0%, var(--bg) 75%);
-  transform-origin: 50% 50%;
+  background: radial-gradient(circle at 50% 50%, #241a12 0%, #1a140f 75%);
   animation: lensShutter 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 @keyframes lensShutter {
   0% {
-    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
-    transform: rotate(0deg);
+    clip-path: circle(0% at 50% 50%);
   }
   30% {
-    clip-path: polygon(200% 50%, 156.07% 156.07%, 50% 200%, -56.07% 156.07%, -100% 50%, -56.07% -56.07%, 50% -100%, 156.07% -56.07%);
-    transform: rotate(35deg);
+    clip-path: circle(150% at 50% 50%);
   }
   55% {
-    clip-path: polygon(200% 50%, 156.07% 156.07%, 50% 200%, -56.07% 156.07%, -100% 50%, -56.07% -56.07%, 50% -100%, 156.07% -56.07%);
-    transform: rotate(45deg);
+    clip-path: circle(150% at 50% 50%);
   }
   100% {
-    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
-    transform: rotate(80deg);
+    clip-path: circle(0% at 50% 50%);
   }
 }
 
@@ -140,5 +149,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .camera-flash { animation: none; opacity: 0; }
   .lens-shutter { animation: none; clip-path: none; opacity: 0; }
 }

@@ -6,8 +6,7 @@ import Nav from './components/Nav';
 import EntranceSplash from './components/EntranceSplash';
 import './App.css';
 
-// Placeholders until Portfolio.js / Contact.js are wired in — keeps the nav
-// links from routing to blank pages in the meantime.
+// Placeholders until Portfolio.js / Contact.js are wired in.
 function Portfolio() {
   return (
     <div className="portfolio-placeholder">
@@ -25,10 +24,12 @@ function Contact() {
   );
 }
 
-// How long the shutter stays fully closed before content changes
-// underneath it — see .lens-shutter keyframes in App.css (closed window
-// is 30%–55% of the 900ms animation, so this sits comfortably inside it).
-const SWAP_AT_MS = 380;
+// Flash: peak-white window is 10%–60% of its 700ms animation (see
+// @keyframes cameraFlash in App.css) — 350ms sits comfortably inside it.
+const FLASH_SWAP_MS = 350;
+// Shutter: fully-closed window is 30%–55% of its 900ms animation (see
+// @keyframes lensShutter in App.css) — 380ms sits comfortably inside it.
+const SHUTTER_SWAP_MS = 380;
 
 function AppShell({ children, onLogoClick, onNavigate }) {
   return (
@@ -59,19 +60,29 @@ function AppShell({ children, onLogoClick, onNavigate }) {
 function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [flashKey, setFlashKey] = useState(0);
-  const swapTimeout = useRef(null);
+  const [shutterKey, setShutterKey] = useState(0);
+  const flashTimeout = useRef(null);
+  const shutterTimeout = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => () => clearTimeout(swapTimeout.current), []);
+  useEffect(() => () => {
+    clearTimeout(flashTimeout.current);
+    clearTimeout(shutterTimeout.current);
+  }, []);
 
-  // Central "flash, then act" helper — every shutter moment in the app
-  // (entrance toggle, nav link clicks) routes through here, so the timing
-  // and visual only ever need to be tuned in one place.
+  // Splash toggle only — header logo, splash's own logo.
   const runWithFlash = (action) => {
-    clearTimeout(swapTimeout.current);
+    clearTimeout(flashTimeout.current);
     setFlashKey((k) => k + 1);
-    swapTimeout.current = setTimeout(action, SWAP_AT_MS);
+    flashTimeout.current = setTimeout(action, FLASH_SWAP_MS);
+  };
+
+  // Page-to-page nav only — Nav.js links.
+  const runWithShutter = (action) => {
+    clearTimeout(shutterTimeout.current);
+    setShutterKey((k) => k + 1);
+    shutterTimeout.current = setTimeout(action, SHUTTER_SWAP_MS);
   };
 
   const toggleSplash = () => {
@@ -86,8 +97,8 @@ function App() {
   };
 
   const handleNavigate = (path) => {
-    if (path === location.pathname) return; // already there — no flash needed
-    runWithFlash(() => navigate(path));
+    if (path === location.pathname) return; // already there — no shutter needed
+    runWithShutter(() => navigate(path));
   };
 
   return (
@@ -103,8 +114,11 @@ function App() {
       {showSplash && <EntranceSplash onLogoClick={toggleSplash} />}
 
       {flashKey > 0 && (
-  <div key={flashKey} className="lens-shutter" aria-hidden="true" />
-)}
+        <div key={flashKey} className="camera-flash" aria-hidden="true" />
+      )}
+      {shutterKey > 0 && (
+        <div key={shutterKey} className="lens-shutter" aria-hidden="true" />
+      )}
     </>
   );
 }
