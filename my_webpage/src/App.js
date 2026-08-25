@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import KapturedMoment from './components/KapturedMoment.png';
 import Home from './components/Home';
+import About from './components/layout/About';
 import Nav from './components/Nav';
 import EntranceSplash from './components/EntranceSplash';
 import './App.css';
@@ -106,6 +107,7 @@ function App() {
       <AppShell onLogoClick={handleHeaderLogoClick} onNavigate={handleNavigate}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
@@ -134,4 +136,6 @@ Help users have a clear way to return to the homepage seamlessly.
 * The website/app should be accessible to users with disabilities, including those who use screen readers or keyboard navigation.
 * The website/app should have a consistent design and branding throughout all pages and components. 
 
+* Keep the same consistent design and branding throughout all pages and components, including color schemes, typography, and imagery.
+(Ex. The picture frame style border around the main content area should be consistent across all pages.)
 */

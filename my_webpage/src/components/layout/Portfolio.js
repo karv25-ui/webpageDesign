@@ -41,6 +41,11 @@ In the portfoilio, there will be categories to help users navigate through the d
 * Each video will be displayed to it's highest quality.
 
 - Event Coverage
+* This category will contain all of the event coverage work of Kaptured Moment.
+* This category will contain events such as weddings, birthdays, baby showers, grauation parties, cookouts, etc.
+* This category will be broken into subcategories that're listed above ^^^
+* Each event coverage section will have a unique design or theme to help users visually distinguish between the different types of event coverage work.
+* 
 - Commercial
 - Personal Projects
 - Landscape 

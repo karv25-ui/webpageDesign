@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@300;400;500&display=swap');
+
+.about {
+  --bg: #1a140f;
+  --bg-alt: #241a12;
+  --cream: #f3e9d8;
+  --amber: #ff7a3d;
+  --gold: #d4a054;
+  --muted: #a4907c;
+
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 64px 32px 96px;
+  color: var(--cream);
+  font-family: 'Work Sans', sans-serif;
+}
+
+.about-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.about-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 20px;
+}
+
+.about-mission {
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.about-subheading {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin: 0 0 20px;
+}
+
+.about-founder {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 72px;
+}
+
+.founder-photo-placeholder {
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  border: 1.5px dashed rgba(212, 160, 84, 0.4);
+  border-radius: 8px;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+}
+
+.founder-bio p {
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.about-portraits {
+  margin-top: 72px;
+}
+
+.portrait-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.portrait-grid-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.portrait-empty {
+  padding: 32px;
+  text-align: center;
+  border: 1.5px dashed rgba(212, 160, 84, 0.4);
+  border-radius: 8px;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.portrait-more-link {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-decoration: none;
+}
+.portrait-more-link:hover {
+  text-decoration: underline;
+}
+
+.about-social {
+  margin-top: 72px;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-link {
+  display: inline-flex;
+  padding: 10px 22px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.social-link:hover,
+.social-link:focus-visible {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--bg);
+}
+.social-link:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .about-founder {
+    grid-template-columns: 1fr;
+  }
+  .founder-photo-placeholder {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+  .portrait-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

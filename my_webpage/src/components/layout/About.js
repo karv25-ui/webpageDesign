@@ -7,6 +7,148 @@
 * See if you can use an api to pull in my social media links and display them dynamically on the About page. This will help users easily find and connect with Kaptured Moment on different platforms.
 * See if you can use an api to pull my self-portraits from different acounts and showcase them on the About page. (Ex. Pinterest, Instagram, etc.)
 * I want to have the option between using apis to pull in my photos or to manually upload them to the page. This will give me flexibility in how I want to showcase my work and allow me to have more control over the content that is displayed on the About page.
+* This page is dedicated to showcasing my self-portraits & providing users with a deeper understanding of my work & story behind Kaptured Moment. It will help users connect with me on a more personal level and understand the inspiration behind my photography.
 * 
 
+(I'm a bit conflicted on whether if I want to have my self-portraits on the About page or not. 
+I want to showcase them on the Portfolio page, but I also want to have the option to showcase them on the About page as well. 
+I want to have the flexibility to choose which photos I want to showcase on each page, and I want to make sure that the photos are displayed in a way that is visually appealing and engaging for the users.)
 */
+
+import './About.css';
+
+// ---- Founder bio ----
+// TODO: swap in your real photo. Intentionally left as a placeholder box
+// (not an <img> import) so this file compiles cleanly even before the
+// image exists — add the file to src/components/ and see the comment
+// below for the one-line swap.
+const FOUNDER_BIO = `Add your story here — how you got into photography, what
+draws you to it, and what Kaptured Moment means to you.`;
+
+// ---- Social links ----
+// Static data — your own URLs. No API needed for this; just keep this
+// list updated when a handle or platform changes.
+const SOCIAL_LINKS = [
+  { label: 'Instagram', url: 'https://instagram.com/kaptured.moment' },
+  { label: 'Pinterest', url: 'https://pinterest.com/kapturedmoment' },
+  { label: 'TikTok', url: 'https://tiktok.com/kapturedmoment' },
+];
+
+// ---- Self-portraits: manual source (works today) ----
+// Add real photos like:
+//   import portrait1 from './portraits/portrait1.jpg';
+// then: { src: portrait1, alt: 'Description for screen readers' }
+const SELF_PORTRAITS_MANUAL = [
+  // { src: portrait1, alt: '...' },
+];
+
+// ---- Self-portraits: API source (future — NOT functional yet) ----
+// Real Instagram/Pinterest photo pulling needs, in order:
+//   1. Your account converted to Instagram Business/Creator (or Pinterest
+//      Business), linked as required by each platform
+//   2. A registered developer app + Meta/Pinterest app review approval
+//   3. A small serverless function (e.g. a Vercel/Netlify function) that
+//      holds the access token server-side and returns just the photo URLs
+//      to this component — the token itself must never ship in this
+//      React bundle, since anything here is visible in the browser.
+// This function is a stub showing the intended shape — swap the body
+// once the serverless endpoint above actually exists.
+async function fetchSelfPortraitsFromApi() {
+  throw new Error(
+    'API photo source not yet configured — see comments in About.js'
+  );
+}
+
+// Flip this once the API path above is real: 'manual' | 'api'
+const PHOTO_SOURCE = 'manual';
+
+function SocialLinks() {
+  return (
+    <ul className="social-links">
+      {SOCIAL_LINKS.map(({ label, url }) => (
+        <li key={label}>
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-link"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// Reusable so Portfolio.js can render the exact same gallery later with a
+// different (or the same) photo array and limit — resolves the "About vs.
+// Portfolio" question by making it a per-page prop, not a permanent choice.
+function SelfPortraitGallery({ photos, limit }) {
+  const shown = limit ? photos.slice(0, limit) : photos;
+
+  if (shown.length === 0) {
+    return (
+      <div className="portrait-empty">
+        Self-portraits coming soon — add images to `SELF_PORTRAITS_MANUAL`
+        in About.js.
+      </div>
+    );
+  }
+
+  return (
+    <div className="portrait-grid">
+      {shown.map((photo, i) => (
+        <img
+          key={i}
+          src={photo.src}
+          alt={photo.alt}
+          className="portrait-grid-img"
+        />
+      ))}
+    </div>
+  );
+}
+
+function About() {
+  const photos = PHOTO_SOURCE === 'manual' ? SELF_PORTRAITS_MANUAL : [];
+
+  return (
+    <div className="about">
+      <section className="about-intro">
+        <p className="about-eyebrow">The Story Behind the Lens</p>
+        <h1 className="about-title">About Kaptured Moment</h1>
+        <p className="about-mission">
+          Add your mission and values here — what Kaptured Moment stands
+          for, and the kind of moments you set out to capture.
+        </p>
+      </section>
+
+      <section className="about-founder">
+        <div className="founder-photo-placeholder" aria-hidden="true">
+          Add founder-photo.jpg
+        </div>
+        <div className="founder-bio">
+          <h2 className="about-subheading">Behind the Camera</h2>
+          <p>{FOUNDER_BIO}</p>
+        </div>
+      </section>
+
+      <section className="about-portraits">
+        <h2 className="about-subheading">Self-Portraits</h2>
+        <SelfPortraitGallery photos={photos} limit={4} />
+        <a href="/portfolio" className="portrait-more-link">
+          See more on the Portfolio page
+        </a>
+      </section>
+
+      <section className="about-social">
+        <h2 className="about-subheading">Find Me Online</h2>
+        <SocialLinks />
+      </section>
+    </div>
+  );
+}
+
+export default About;
+export { SelfPortraitGallery };
