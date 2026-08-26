@@ -13,6 +13,12 @@
 (I'm a bit conflicted on whether if I want to have my self-portraits on the About page or not. 
 I want to showcase them on the Portfolio page, but I also want to have the option to showcase them on the About page as well. 
 I want to have the flexibility to choose which photos I want to showcase on each page, and I want to make sure that the photos are displayed in a way that is visually appealing and engaging for the users.)
+
+# See 'const FOUNDER_BIO'
+* Thinking about making the achievements section a seperate component.
+* Maybe thinking about adding another page to the website dedicated to showcasing my achievements.
+
+
 */
 
 import './About.css';
@@ -22,8 +28,11 @@ import './About.css';
 // (not an <img> import) so this file compiles cleanly even before the
 // image exists — add the file to src/components/ and see the comment
 // below for the one-line swap.
-const FOUNDER_BIO = `Add your story here — how you got into photography, what
-draws you to it, and what Kaptured Moment means to you.`;
+const FOUNDER_BIO = {text: `Self-taught Photographer/Videographer with a passion for capturing moments that tell a story. This passion has led to creating moments
+and expressing emotions through the lens from both a personal and professional perspective. Strive to create images & videos that evoke emotions to leave a lasting impression on the viewer.`,
+Achievements: `
+Magazine Featured |
+Press Coverage for Mayor Wu & Gov Maura Healey |`};
 
 // ---- Social links ----
 // Static data — your own URLs. No API needed for this; just keep this
@@ -31,7 +40,8 @@ draws you to it, and what Kaptured Moment means to you.`;
 const SOCIAL_LINKS = [
   { label: 'Instagram', url: 'https://instagram.com/kaptured.moment' },
   { label: 'Pinterest', url: 'https://pinterest.com/kapturedmoment' },
-  { label: 'TikTok', url: 'https://tiktok.com/kapturedmoment' },
+  { label: 'TikTok', url: 'https://www.tiktok.com/@kaptured.moment' },
+  { label: 'YouTube', url: 'https://youtube.com/@kaptured.moment' },
 ];
 
 // ---- Self-portraits: manual source (works today) ----
@@ -119,8 +129,8 @@ function About() {
         <p className="about-eyebrow">The Story Behind the Lens</p>
         <h1 className="about-title">About Kaptured Moment</h1>
         <p className="about-mission">
-          Add your mission and values here — what Kaptured Moment stands
-          for, and the kind of moments you set out to capture.
+         To capture is to preserve a moment in time through image, sound & quality. 
+          Kaptured Moment represents the essence of a picture worth more than a thousand words!
         </p>
       </section>
 
@@ -130,7 +140,8 @@ function About() {
         </div>
         <div className="founder-bio">
           <h2 className="about-subheading">Behind the Camera</h2>
-          <p>{FOUNDER_BIO}</p>
+          <p>{FOUNDER_BIO.text}</p>
+          <p>{FOUNDER_BIO.Achievements}</p>
         </div>
       </section>
 
