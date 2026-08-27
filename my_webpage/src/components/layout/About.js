@@ -28,12 +28,22 @@ import './About.css';
 // (not an <img> import) so this file compiles cleanly even before the
 // image exists — add the file to src/components/ and see the comment
 // below for the one-line swap.
-const FOUNDER_BIO = {text: `Self-taught Photographer/Videographer with a passion for capturing moments that tell a story. This passion has led to creating moments
-and expressing emotions through the lens from both a personal and professional perspective. Strive to create images & videos that evoke emotions to leave a lasting impression on the viewer.`,
-Achievements: `
-Magazine Featured |
-Press Coverage for Mayor Wu & Gov Maura Healey |`};
+const FOUNDER_BIO = {text: `Self-Taught Photographer/Videographer| Aspiring Developer| Creative/Production Director|  with a passion for capturing moments that tell a story. This passion has led to creating moments
+and expressing emotions through the lens & the creative thoughts from both a personal and professional perspective. Strive to create images, videos & moments that evoke emotions to leave a lasting impression on the viewer.`,
+}
 
+const ACCOMPLISHMENTS = {
+  title: 'Accomplishments',
+  items: [
+    'Featured in local magazines and publications for photography work (10011 Mag, GMARO Mag, etc.)',
+    'Press and coverage for Mayor Wu and Maura Healy campaign/inauguration event',
+    '500+ sessions shot since 2020, including weddings, portraits & events',
+    'Certificate in Software Engineering & Developing from IBM (2025-2026)',
+    'Certificate in Front-End Web Development from IBM (2025-2026)',
+    'Certificate in React Development from IBM (2025-2026)',
+    'Certificate in Cloud Computing from IBM (2025-2026)',
+  ]
+};
 // ---- Social links ----
 // Static data — your own URLs. No API needed for this; just keep this
 // list updated when a handle or platform changes.
@@ -141,7 +151,16 @@ function About() {
         <div className="founder-bio">
           <h2 className="about-subheading">Behind the Camera</h2>
           <p>{FOUNDER_BIO.text}</p>
-          <p>{FOUNDER_BIO.Achievements}</p>
+          {ACCOMPLISHMENTS.items.length > 0 && (
+            <div className="founder-accomplishments">
+              <h3>{ACCOMPLISHMENTS.title}</h3>
+              <ul className="accomplishments-list">
+                {ACCOMPLISHMENTS.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
 
