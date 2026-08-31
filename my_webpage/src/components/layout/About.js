@@ -62,6 +62,21 @@ const SOCIAL_LINKS = [
   { label: 'YouTube', url: 'https://youtube.com/@kaptured.moment' },
 ];
 
+/* 
+cat > src/components/layout/socialLinks.js << 'EOF'
+// Shared across About.js and Contact.js — update a handle here once,
+// not in two places.
+const SOCIAL_LINKS = [
+   { label: 'Instagram', url: 'https://instagram.com/kaptured.moment' },
+  { label: 'Pinterest', url: 'https://pinterest.com/kapturedmoment' },
+  { label: 'TikTok', url: 'https://www.tiktok.com/@kaptured.moment' },
+  { label: 'YouTube', url: 'https://youtube.com/@kaptured.moment' },
+];
+
+export default SOCIAL_LINKS;
+EOF
+*/
+
 // ---- Self-portraits: manual source (works today) ----
 // Add real photos like:
 //   import portrait1 from './portraits/portrait1.jpg';

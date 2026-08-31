@@ -43,7 +43,7 @@ General Questions Form/Section:
 
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import SOCIAL_LINKS from './SocialLinks';
+import SOCIAL_LINKS from './socialLinks';
 import './Contact.css';
 
 const SERVICES = [
@@ -305,8 +305,8 @@ function Contact() {
       <section className="contact-direct">
         <h2 className="contact-subheading">Prefer to reach out directly?</h2>
         <ul className="contact-info-list">
-          <li>Email: <a href="mailto:hello@kapturedmoment.com">hello@kapturedmoment.com</a></li>
-          <li>Phone: <a href="tel:+10000000000">Add your number</a></li>
+          <li>Email: <a href="mailto:kaptured.moment@gmail.com">kaptured.moment@gmail.com</a></li>
+          <li>Phone: <a href="tel:+1 (857) 423-0332">+1 (857) 423-0332</a></li>
         </ul>
         <ul className="social-links">
           {SOCIAL_LINKS.map(({ label, url }) => (
