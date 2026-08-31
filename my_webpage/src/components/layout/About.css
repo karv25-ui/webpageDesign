@@ -185,3 +185,11 @@
   left: 0;
   color: var(--gold);
 }
+
+.founder-titles {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1.05rem;
+  margin: 0 0 12px;
+}

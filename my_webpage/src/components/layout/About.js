@@ -4,9 +4,11 @@
 * The About component  will provide users with a breif summary/story of Kaptured Moment, including its mission, values, and background information about the founder or team behind the brand.
 * The About component will also include an image section that showcases the founder of Kaptured Moment, along with a breif description of their background and expertise in photography. This will help the users understand Kaptured Moment's story behind the lens.
 * The About component will also include a section that highlights all of my different links to my social media accounts & platforms. 
-* See if you can use an api to pull in my social media links and display them dynamically on the About page. This will help users easily find and connect with Kaptured Moment on different platforms.
+* See if you can use an api to pull in my social media links and display them dynamically on the About page. 
+This will help users easily find and connect with Kaptured Moment on different platforms.
 * See if you can use an api to pull my self-portraits from different acounts and showcase them on the About page. (Ex. Pinterest, Instagram, etc.)
-* I want to have the option between using apis to pull in my photos or to manually upload them to the page. This will give me flexibility in how I want to showcase my work and allow me to have more control over the content that is displayed on the About page.
+* I want to have the option between using apis to pull in my photos or to manually upload them to the page. 
+This will give me flexibility in how I want to showcase my work and allow me to have more control over the content that is displayed on the About page.
 * This page is dedicated to showcasing my self-portraits & providing users with a deeper understanding of my work & story behind Kaptured Moment. It will help users connect with me on a more personal level and understand the inspiration behind my photography.
 * 
 
@@ -18,6 +20,9 @@ I want to have the flexibility to choose which photos I want to showcase on each
 * Thinking about making the achievements section a seperate component.
 * Maybe thinking about adding another page to the website dedicated to showcasing my achievements.
 
+* In the accomplsihments section, I want to put a hyperlink for the magazine accolade that I have been featured in. 
+I want to make sure that users can easily access the magazine & read the article that I was featured in. 
+* I just might add a hyperlink to all of the accomplishments that I have listed in the section.
 
 */
 
@@ -28,9 +33,12 @@ import './About.css';
 // (not an <img> import) so this file compiles cleanly even before the
 // image exists — add the file to src/components/ and see the comment
 // below for the one-line swap.
-const FOUNDER_BIO = {text: `Self-Taught Photographer/Videographer| Aspiring Developer| Creative/Production Director|  with a passion for capturing moments that tell a story. This passion has led to creating moments
-and expressing emotions through the lens & the creative thoughts from both a personal and professional perspective. Strive to create images, videos & moments that evoke emotions to leave a lasting impression on the viewer.`,
-}
+const FOUNDER_BIO = {
+  titles:
+    'Self-Taught Photographer/Videographer | Aspiring Developer | Creative/Production Director',
+  text:
+    'A passion for capturing moments that tell a story. This passion has led to creating moments and expressing emotions through the lens and the creative thoughts from both a personal and professional perspective. Strive to create images, videos, and moments that evoke emotions to leave a lasting impression on the viewer.',
+};
 
 const ACCOMPLISHMENTS = {
   title: 'Accomplishments',
@@ -150,6 +158,7 @@ function About() {
         </div>
         <div className="founder-bio">
           <h2 className="about-subheading">Behind the Camera</h2>
+          <h3 className="founder-titles">{FOUNDER_BIO.titles}</h3>
           <p>{FOUNDER_BIO.text}</p>
           {ACCOMPLISHMENTS.items.length > 0 && (
             <div className="founder-accomplishments">
@@ -173,7 +182,7 @@ function About() {
       </section>
 
       <section className="about-social">
-        <h2 className="about-subheading">Find Me Online</h2>
+        <h2 className="about-subheading">Find Me Online!</h2>
         <SocialLinks />
       </section>
     </div>

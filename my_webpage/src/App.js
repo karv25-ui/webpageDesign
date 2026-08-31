@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import KapturedMoment from './components/KapturedMoment.png';
 import Home from './components/Home';
+import Contact from './components/layout/Contact';
 import About from './components/layout/About';
 import Nav from './components/Nav';
 import EntranceSplash from './components/EntranceSplash';
@@ -12,14 +13,6 @@ function Portfolio() {
   return (
     <div className="portfolio-placeholder">
       <h2>Portfolio</h2>
-      <p>Coming soon — building this next.</p>
-    </div>
-  );
-}
-function Contact() {
-  return (
-    <div className="portfolio-placeholder">
-      <h2>Contact</h2>
       <p>Coming soon — building this next.</p>
     </div>
   );
@@ -59,7 +52,10 @@ function AppShell({ children, onLogoClick, onNavigate }) {
 }
 
 function App() {
-  const [showSplash, setShowSplash] = useState(true);
+ const [showSplash, setShowSplash] = useState(() => {
+  const stored = sessionStorage.getItem('km-show-splash');
+  return stored === null ? true : stored === 'true';
+});
   const [flashKey, setFlashKey] = useState(0);
   const [shutterKey, setShutterKey] = useState(0);
   const flashTimeout = useRef(null);
@@ -71,6 +67,10 @@ function App() {
     clearTimeout(flashTimeout.current);
     clearTimeout(shutterTimeout.current);
   }, []);
+
+  useEffect(() => {
+  sessionStorage.setItem('km-show-splash', String(showSplash));
+}, [showSplash]);
 
   // Splash toggle only — header logo, splash's own logo.
   const runWithFlash = (action) => {
