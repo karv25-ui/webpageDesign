@@ -27,6 +27,7 @@ I want to make sure that users can easily access the magazine & read the article
 */
 
 import './About.css';
+import SOCIAL_LINKS from './socialLinks.js';
 
 // ---- Founder bio ----
 // TODO: swap in your real photo. Intentionally left as a placeholder box
@@ -55,12 +56,12 @@ const ACCOMPLISHMENTS = {
 // ---- Social links ----
 // Static data — your own URLs. No API needed for this; just keep this
 // list updated when a handle or platform changes.
-const SOCIAL_LINKS = [
+/*const SOCIAL_LINKS = [
   { label: 'Instagram', url: 'https://instagram.com/kaptured.moment' },
   { label: 'Pinterest', url: 'https://pinterest.com/kapturedmoment' },
   { label: 'TikTok', url: 'https://www.tiktok.com/@kaptured.moment' },
   { label: 'YouTube', url: 'https://youtube.com/@kaptured.moment' },
-];
+];*/
 
 /* 
 cat > src/components/layout/socialLinks.js << 'EOF'
@@ -108,7 +109,7 @@ const PHOTO_SOURCE = 'manual';
 function SocialLinks() {
   return (
     <ul className="social-links">
-      {SOCIAL_LINKS.map(({ label, url }) => (
+      {SOCIAL_LINKS.map(({ label, url, Icon }) => (
         <li key={label}>
           <a
             href={url}
@@ -116,6 +117,7 @@ function SocialLinks() {
             rel="noopener noreferrer"
             className="social-link"
           >
+            <Icon className="social-icon" aria-hidden="true" />
             {label}
           </a>
         </li>

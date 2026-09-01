@@ -220,3 +220,15 @@
     grid-template-columns: 1fr;
   }
 }
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+}

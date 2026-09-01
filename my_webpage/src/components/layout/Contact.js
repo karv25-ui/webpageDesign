@@ -39,6 +39,11 @@ General Questions Form/Section:
 * Minimal design with functionality as the main focus. Clean, simple, and easy to navigate. The goal is to make it as easy as possible for users to get in touch with Kaptured Moment and book their sessions without any confusion or frustration.
 * Steps by step instructions on how to fill out 
 
+* NEED TO ADD PREFERENCE FOR CONTACT METHOD (EMAIL, PHONE, TEXT) & TIME OF DAY FOR CONTACT (MORNING, AFTERNOON, EVENING).
+THERE NEEDS TO BE A DROP DOWN OPTION FOR PREFERRED CONTACT METHOD & TIME OF DAY FOR CONTACT.
+
+* WAS THINKING ABPUT ADDING AN ANIMATION AFTER A POTENTIAL CLIENT SUBMITS A FORM. (EX. A CHECK MARK ANIMATION OR A "THANK YOU" ANIMATION AFTER SUBMISSION)
+
 */
 
 import { useState } from 'react';
@@ -87,6 +92,7 @@ function validate(values, requireBookingFields) {
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
     errors.email = 'Please enter a valid email address.';
   }
+  if (!values.phone.trim()) errors.phone = 'Please enter your phone number.';
   if (!values.message.trim()) errors.message = 'Please add a short message.';
 
   if (requireBookingFields) {
@@ -100,7 +106,7 @@ function validate(values, requireBookingFields) {
 function ContactForm({ variant }) {
   const isBooking = variant === 'book';
   const [values, setValues] = useState({
-    name: '', email: '', service: '', date: '', time: '', message: '',
+    name: '', email: '', phone: '', service: '', date: '', time: '', message: '',
   });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | submitting | success | error
@@ -120,7 +126,7 @@ function ContactForm({ variant }) {
     try {
       await sendContactEmail(e.target);
       setStatus('success');
-      setValues({ name: '', email: '', service: '', date: '', time: '', message: '' });
+      setValues({ name: '', email: '', phone: '', service: '', date: '', time: '', message: '' });
     } catch (err) {
       setStatus('error');
     }
@@ -309,14 +315,15 @@ function Contact() {
           <li>Phone: <a href="tel:+1 (857) 423-0332">+1 (857) 423-0332</a></li>
         </ul>
         <ul className="social-links">
-          {SOCIAL_LINKS.map(({ label, url }) => (
+          {SOCIAL_LINKS.map(({ label, url, Icon }) => (
             <li key={label}>
               <a href={url} target="_blank" rel="noopener noreferrer" className="social-link">
+                <Icon className="social-icon" aria-hidden="true" />
                 {label}
-              </a>
-            </li>
-          ))}
-        </ul>
+                </a>
+                </li>
+              ))}
+              </ul>
       </section>
     </div>
   );
