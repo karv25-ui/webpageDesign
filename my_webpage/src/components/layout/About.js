@@ -16,13 +16,15 @@ This will give me flexibility in how I want to showcase my work and allow me to 
 I want to showcase them on the Portfolio page, but I also want to have the option to showcase them on the About page as well. 
 I want to have the flexibility to choose which photos I want to showcase on each page, and I want to make sure that the photos are displayed in a way that is visually appealing and engaging for the users.)
 
+----------------------->
+
 # See 'const FOUNDER_BIO'
 * Thinking about making the achievements section a seperate component.
-* Maybe thinking about adding another page to the website dedicated to showcasing my achievements.
+* Maybe thinking about adding another page to the website dedicated to showcasing my achievements. #DONE
 
 * In the accomplsihments section, I want to put a hyperlink for the magazine accolade that I have been featured in. 
 I want to make sure that users can easily access the magazine & read the article that I was featured in. 
-* I just might add a hyperlink to all of the accomplishments that I have listed in the section.
+* I just might add a hyperlink to all of the accomplishments that I have listed in the section. #DONE
 
 */
 
