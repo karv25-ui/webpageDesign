@@ -9,7 +9,6 @@
   --muted: #a4907c;
 
   position: relative;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,4 +131,9 @@
 @media (max-width: 480px) {
   .frame-corner { width: 18px; height: 18px; }
   .film-stamp { bottom: 24px; right: 24px; font-size: 0.6rem; }
+  .frame-corner { width: 18px; height: 18px; }
+  .film-stamp { bottom: 24px; right: 24px; font-size: 0.6rem; }
+  .homepage-content { padding: 0 20px; }
+  .homepage-description { font-size: 0.95rem; }
+  .kaptured-button { padding: 14px 28px; }
 }

@@ -14,6 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
   background: radial-gradient(ellipse at 50% 40%, var(--bg-alt) 0%, var(--bg) 70%);
   animation: splashFadeIn 0.4s ease both;
 }
@@ -109,4 +110,17 @@
 @media (prefers-reduced-motion: reduce) {
   .splash { animation: none; }
   .splash-logo { animation: none; }
+  .splash-trigger { gap: 14px; padding: 16px; }
 }
+
+/* Short viewports — phone in landscape, or older small screens. Without
+   this, the centered content can overflow top/bottom with no way to
+   scroll to the cut-off part, since .splash is a fixed full-screen
+   overlay rather than a normal scrolling page. */
+@media (max-height: 500px) {
+  .splash-logo { height: 64px; }
+  .splash-trigger { gap: 10px; padding: 12px; }
+  .splash-greeting { font-size: 0.7rem; min-height: 0; }
+  .splash-hint { display: none; }
+}
+

@@ -161,6 +161,29 @@
   .portrait-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  @media (max-width: 480px) {
+  .about {
+    padding: 40px 20px 72px;
+  }
+
+  .about-founder {
+    gap: 28px;
+    margin-top: 56px;
+  }
+
+  .about-portraits,
+  .about-social {
+    margin-top: 56px;
+  }
+
+  .portrait-grid {
+    gap: 8px;
+  }
+
+  .social-link {
+    padding: 12px 20px;
+  }
+}
 }
 
 .accomplishments-list {

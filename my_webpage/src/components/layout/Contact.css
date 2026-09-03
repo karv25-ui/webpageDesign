@@ -439,4 +439,51 @@
     padding: 20px;
     max-height: 85vh;
   }
+
+  .contact {
+    padding: 40px 20px 72px;
+  }
+
+  .contact-tab {
+    flex: 1;
+    text-align: center;
+    padding: 14px 12px;
+  }
+
+  .form-submit {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .terms-field-row {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .terms-link-btn {
+    width: 100%;
+  }
+
+  .terms-actions {
+    flex-direction: column;
+  }
+
+  .terms-disagree,
+  .terms-agree {
+    width: 100%;
+    padding: 14px 24px;
+  }
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: var(--bg-alt);
+  border: 1px solid rgba(212, 160, 84, 0.3);
+  border-radius: 6px;
+  padding: 12px 14px;
+  color: var(--cream);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1rem;
 }

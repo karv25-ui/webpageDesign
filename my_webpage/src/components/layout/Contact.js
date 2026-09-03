@@ -221,17 +221,58 @@ function TermsModal({ open, onAgree, onDisagree, onRequestClose, triggerRef }) {
       >
         <h2 id="terms-title">Terms of Service &amp; Policies</h2>
 
-        <div className="terms-content" ref={contentRef} onScroll={handleScroll}>
+        <div className="terms-content"  ref={contentRef} onScroll={handleScroll}>
           {/* TODO: replace with your real policies. */}
-          <p>Add your Cancellation Policy here — notice window and any fee.</p>
-          <p>Add your Refund Policy here — what's refundable and under what conditions.</p>
-          <p>Add your Rescheduling Policy here.</p>
-          <p>Add your Image Usage / Model Release terms here.</p>
-          <p>Add your Payment Terms & deposit requirements here.</p>
-          <p>Add any Weather / Outdoor Shoot contingency terms here.</p>
-          <p style={{ marginTop: '1.5rem' }}>
-            * End of policies. You must reach this line before you can agree
-            or disagree. *
+          <p style={{ marginTop: '1.2rem' }}>
+            <strong>Kaptured Moment</strong> is committed to providing high-quality services and ensuring a positive experience for all clients. By booking a session with <strong>Kaptured Moment</strong>, <em>clients</em> agree to the following terms of service and policies:</p>
+            <p>Before session begins the remainder amount is due to begin the session or after session. No progression or service will continue until the full amount is paid.</p>
+            <p><em>Clients</em> who pay in full before the session & would like to cancel the day of, will be reimbursed a 50% refund
+            due to the time reserved for your sessions & work put in to set up for your session. If you would like to reschedule your shoot date, there needs to be a <strong>24-48hr notice.</strong>
+          </p>
+          <p>A refund is available under certain conditions:
+            <ul>
+            <li>
+              If the session is canceled by <strong>Kaptured Moment</strong>, a full refund will be issued.
+            </li>
+            <li>
+              If the session is <strong>canceled by the client</strong>, a 50% refund will be issued if canceled with a 24-48hr notice.
+            </li>
+            <li>
+              If the session is <strong>canceled by the client</strong> with less than 24hr notice, no refund will be issued.
+            </li>
+            </ul>
+          </p>
+          <p>All sessions are subject to availability. <strong>Kaptured Moment</strong> reserves the right to reschedule or cancel sessions due to unforeseen circumstances, including but not limited to inclement weather, equipment failure, or personal emergencies. In such cases, Kaptured Moment will make reasonable efforts to reschedule the session at a mutually convenient time.</p>
+          <p><em>Clients</em> are responsible for providing accurate and complete information regarding their session preferences, including but not limited to location, time, and any specific requirements. <strong>Kaptured Moment</strong> is not responsible for any issues arising from inaccurate or incomplete information provided by the client.</p>
+          <p><em>Clients</em> are expected to arrive on time for their scheduled sessions. Late arrivals may result in a shortened session time or rescheduling, at the discretion of <strong>Kaptured Moment</strong>.
+          </p>
+          <p><em>Clients</em> who would like to reschedule their shoot date must provide a <strong>24-48hr notice. </strong> 
+             Otherwise a fee will be applied.
+            </p>
+          <p>Once <em>clients</em> receive their images, <strong>they are not allowed to modify them to any extent.</strong> They are responsible for ensuring the images stay as is. <strong>Unless permitted by Kaptured Moment</strong>.</p>
+          <p>When booking, 50% deposit is required to lock in your date.
+            (Deposits are non-refundable unless the session is canceled by Kaptured Moment, not rescheduled.)
+          </p>
+          <p><em>Clients</em> are allowed to: 
+          <ul>
+            <li>Film BTS (Don't be stingy and share the BTS with Kaptured Moment as well!)</li>
+            <li>bring their own props and clothing for the session</li>
+            <li>request specific poses or shots</li>
+            <li>request specific locations for the session</li>
+            <li>Bring guest to the session. (Without interfering with the session. Guest may be asked to leave if they disrupt the shoot.)</li>
+          </ul>
+          </p>
+          <p><strong>In the event when the <em>client</em> wants the raw photos/footage, will be subject to a fee.</strong></p>
+          <p>In the event of bad weather or other unforeseen circumstances, <strong>Kaptured Moment</strong> will make reasonable efforts to reschedule the session at a mutually convenient time.</p>
+          <p><em>Clients</em> are responsible for reviewing and understanding the terms of service and policies outlined above. By agreeing to these terms, <em>clients</em> acknowledge that they have read, understood, and accepted the conditions set forth by <strong>Kaptured Moment</strong>.</p>
+          <p>By booking a session with <strong>Kaptured Moment</strong>, <em>clients</em> agree to abide by the terms of service and policies outlined above. Failure to comply with these terms may result in the cancellation of the session and forfeiture of any payments made.</p>
+          <p>These terms of service and policies are subject to change at the discretion of <strong>Kaptured Moment</strong>. <em>Clients</em> will be notified of any significant changes prior to their scheduled session.</p>
+          <p>For any questions or concerns regarding these terms of service and policies, <em>clients</em> are encouraged to contact <strong>Kaptured Moment</strong> directly for clarification.</p>
+          <p>By proceeding with the booking process, <em>clients</em> acknowledge that they have read, understood, and agreed to the terms of service and policies outlined above.</p>
+          <p>Thank you for choosing <strong>Kaptured Moment</strong> for your creative needs. Look forward to capturing your special moments!</p>
+          <p style={{ marginTop: '1.5rem', fontWeight: 'bold' }}>
+            *End of policies. You must reach this line before you can agree
+            or disagree.*
           </p>
         </div>
 
