@@ -1,6 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaSun, FaMoon, FaImage, FaTimes } from 'react-icons/fa';
 import './Home.css';
 
 function getStamp(date) {
@@ -12,156 +11,14 @@ function getStamp(date) {
   return `${day} · ${mm}.${dd}.${yy}`;
 }
 
-const THEME_KEY = 'km-home-theme';
-// This one is a personal, per-browser preview only — see BACKGROUND_KEY
-// usage below and the note in the picker UI itself.
-const BACKGROUND_KEY = 'km-home-background';
-
-// ---- Site-wide background (shows to every visitor) ----
-// The "for real, for everyone" path — same manual pattern used elsewhere
-// in this app (self-portraits, founder photo). To set it:
-//   1. Add your image file(s) to src/components/layout/ (or a subfolder)
-//   2. Import them below: import heroBg from './hero-bg.jpg';
-//   3. Set this to either:
+// ---- Homepage background — admin-controlled, visible to every visitor ----
+// Edit this file, commit, redeploy — that's the only way it changes.
+//   1. Add image file(s) to src/components/layout/ (or a subfolder)
+//   2. Import them: import heroBg from './hero-bg.jpg';
+//   3. Set mode + images below:
 //        { mode: 'single', images: [heroBg] }
 //        { mode: 'collage', images: [img1, img2, img3, img4] }
-//      or leave as-is for the current themed gradient look.
-// A visitor's own local upload (the in-page picker) previews on top of
-// this on their device only — it never changes what other visitors see.
 const HOME_BACKGROUND = { mode: 'default', images: [] };
-
-const MAX_IMAGE_BYTES = 1 * 1024 * 1024; // 1MB per image — keeps base64'd
-// storage comfortably under typical browser localStorage limits, even
-// with a full 4-image collage.
-const MAX_COLLAGE_IMAGES = 4;
-
-function fileToDataUrl(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
-
-function ThemeToggle({ theme, onToggle }) {
-  return (
-    <button
-      type="button"
-      className="theme-toggle"
-      onClick={onToggle}
-      aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-    >
-      {theme === 'dark' ? <FaSun /> : <FaMoon />}
-    </button>
-  );
-}
-
-function BackgroundPicker({ background, onChange, onClose }) {
-  const [error, setError] = useState('');
-  const panelRef = useRef(null);
-
-  useEffect(() => {
-    panelRef.current?.focus();
-  }, []);
-
-  useEffect(() => {
-    const handleKey = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', handleKey);
-    return () => document.removeEventListener('keydown', handleKey);
-  }, [onClose]);
-
-  const handleFiles = async (fileList, mode) => {
-    setError('');
-    const files = Array.from(fileList).slice(0, mode === 'collage' ? MAX_COLLAGE_IMAGES : 1);
-
-    for (const file of files) {
-      if (!file.type.startsWith('image/')) {
-        setError('Please choose image files only.');
-        return;
-      }
-      if (file.size > MAX_IMAGE_BYTES) {
-        setError(`"${file.name}" is too large — please use images under 1MB each.`);
-        return;
-      }
-    }
-
-    try {
-      const dataUrls = await Promise.all(files.map(fileToDataUrl));
-      const next = { mode, images: dataUrls };
-      localStorage.setItem(BACKGROUND_KEY, JSON.stringify(next));
-      onChange(next);
-    } catch {
-      setError(
-        'Could not save that background — the file(s) may be too large ' +
-        'for browser storage. Try a smaller image or fewer photos.'
-      );
-    }
-  };
-
-  const handleReset = () => {
-    localStorage.removeItem(BACKGROUND_KEY);
-    onChange(null);
-    setError('');
-  };
-
-  return (
-    <div className="bg-picker-overlay" role="presentation" onClick={onClose}>
-      <div
-        className="bg-picker-panel"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="bg-picker-title"
-        tabIndex={-1}
-        ref={panelRef}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="bg-picker-header">
-          <h2 id="bg-picker-title">Homepage Background</h2>
-          <button type="button" className="bg-picker-close" onClick={onClose} aria-label="Close">
-            <FaTimes />
-          </button>
-        </div>
-
-        <p className="bg-picker-note">
-          This preview only changes what you see on this device — it won't
-          change the background for other visitors.
-        </p>
-
-        <div className="bg-picker-options">
-          <label className="bg-picker-option">
-            <span>Single photo</span>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => e.target.files.length && handleFiles(e.target.files, 'single')}
-            />
-          </label>
-
-          <label className="bg-picker-option">
-            <span>Collage (up to {MAX_COLLAGE_IMAGES} photos)</span>
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              onChange={(e) => e.target.files.length && handleFiles(e.target.files, 'collage')}
-            />
-          </label>
-        </div>
-
-        {error && <p className="bg-picker-error" role="alert">{error}</p>}
-
-        {background && (
-          <button type="button" className="bg-picker-reset" onClick={handleReset}>
-            Reset to default background
-          </button>
-        )}
-      </div>
-    </div>
-  );
-}
 
 function HeroBackground({ background }) {
   if (background.mode === 'single' && background.images[0]) {
@@ -231,47 +88,19 @@ function UpdatesSection({ updates }) {
 
 function Home() {
   const [now, setNow] = useState(new Date());
-  const [theme, setTheme] = useState(() => localStorage.getItem(THEME_KEY) || 'dark');
-  const [background, setBackground] = useState(() => {
-    try {
-      const stored = localStorage.getItem(BACKGROUND_KEY);
-      return stored ? JSON.parse(stored) : null;
-    } catch {
-      return null;
-    }
-  });
-  const [pickerOpen, setPickerOpen] = useState(false);
-  const pickerTriggerRef = useRef(null);
 
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 60000);
     return () => clearInterval(id);
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem(THEME_KEY, theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
-
-  const closePicker = () => {
-    setPickerOpen(false);
-    pickerTriggerRef.current?.focus();
-  };
-
-  // Local override wins if present; otherwise falls back to the site-wide
-  // config above. Whichever is active is what actually renders, and what
-  // decides whether the contrast scrim kicks in.
-  const resolvedBackground = background || HOME_BACKGROUND;
   const hasCustomBackground =
-    resolvedBackground.mode !== 'default' && resolvedBackground.images.length > 0;
+    HOME_BACKGROUND.mode !== 'default' && HOME_BACKGROUND.images.length > 0;
 
   return (
-    <div className="homepage" data-theme={theme}>
+    <div className="homepage">
       <section className={`homepage-hero ${hasCustomBackground ? 'homepage-hero--custom-bg' : ''}`}>
-        <HeroBackground background={resolvedBackground} />
+        <HeroBackground background={HOME_BACKGROUND} />
         <div className="hero-scrim" aria-hidden="true" />
 
         <div className="homepage-grain" aria-hidden="true" />
@@ -282,20 +111,6 @@ function Home() {
         <span className="frame-corner frame-corner--br" aria-hidden="true" />
 
         <div className="film-stamp">{getStamp(now)}</div>
-
-        <div className="hero-controls">
-          <button
-            type="button"
-            className="bg-picker-trigger"
-            ref={pickerTriggerRef}
-            onClick={() => setPickerOpen(true)}
-            aria-haspopup="dialog"
-            aria-label="Change homepage background"
-          >
-            <FaImage />
-          </button>
-          <ThemeToggle theme={theme} onToggle={toggleTheme} />
-        </div>
 
         <div className="homepage-content">
           <h1 className="homepage-title">
@@ -312,14 +127,6 @@ function Home() {
       </section>
 
       <UpdatesSection updates={UPDATES} />
-
-      {pickerOpen && (
-        <BackgroundPicker
-          background={background}
-          onChange={setBackground}
-          onClose={closePicker}
-        />
-      )}
     </div>
   );
 }
@@ -345,4 +152,10 @@ It is the landing page that welcomes the users to the website/app and encourages
 * ALLOW THIS TO CAPTIVATE THE USERS ATTENTION AND ENCOURAGE THEM TO EXPLORE MORE.
 
  * i want to be able tp upload a picture if I would like in the background of the hompeage. Or it can be a collage. I want to be able to choose from either or seamlessly and effortlessly. Make this acccessible.
+
+ * The theme switch from light to dark mode should be smooth and visually appealing, with a transition effect that enhances the user experience. The transition should be subtle and not distracting, allowing users to enjoy the change in theme without feeling overwhelmed or disoriented.
+ The theme should also be consistent throughout the website/app, ensuring that all pages & components follow the same design principles and color schemes. This will create a cohesive and professional look for the website/app, enhancing the overall user experience.
+ * The buttons for the image upload and theme switch should NOT interfere with the main content of the homepage and should be placed in a way that is easily accessible but does not distract from the main content. 
+ The buttons should be clearly labeled and easy to understand, allowing users to quickly and easily access the features they need without confusion or frustration.
+
  */

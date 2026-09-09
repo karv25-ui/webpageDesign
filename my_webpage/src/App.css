@@ -11,6 +11,18 @@
   min-height: 100vh;
 }
 
+/* Site-wide light theme override. Every page inherits these custom
+   properties from here rather than defining its own copy — that's what
+   makes toggling this actually reach every page instead of just Home. */
+.App[data-theme="light"] {
+  --bg: #f3e9d8;
+  --bg-alt: #e9dcc0;
+  --cream: #2a1f16;
+  --amber: #d9591a;
+  --gold: #a97a34;
+  --muted: #7a6a56;
+}
+
 .background {
   display: flex;
   flex-direction: column;
@@ -27,6 +39,13 @@
   justify-content: space-between;
   padding: 24px 40px;
   border-bottom: 1px solid rgba(212, 160, 84, 0.15);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
 }
 
 .logo-link {
@@ -54,6 +73,33 @@
   height: 44px;
   width: auto;
   display: block;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  background: none;
+  color: var(--gold);
+  cursor: pointer;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--bg);
+  transform: scale(1.05);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 2px;
 }
 
 .landing-page {
@@ -92,8 +138,7 @@
   letter-spacing: 0.05em;
 }
 
-/* Camera-flash — used only for the entrance-splash toggle (header logo /
-   splash logo). A fresh instance mounts via `key` on each trigger. */
+/* Shared flash overlay — entrance-splash toggle only. */
 .camera-flash {
   position: fixed;
   inset: 0;
@@ -102,7 +147,6 @@
   pointer-events: none;
   animation: cameraFlash 0.7s ease-out forwards;
 }
-
 @keyframes cameraFlash {
   0% { opacity: 0; }
   10% { opacity: 1; }
@@ -110,14 +154,7 @@
   100% { opacity: 0; }
 }
 
-
-/* Shared lens-shutter transition for every "shutter moment" in the app
-   (entrance toggle, nav clicks). A fresh instance mounts via `key` on each
-   trigger so the animation restarts cleanly even on rapid repeat clicks.
-   Shape: an 8-point octagon (echoing an 8-blade iris) that grows from a
-   center point to full coverage, holds, then shrinks back to a point —
-   with a slow rotation throughout so it reads as blades twisting rather
-   than a shape just scaling. */
+/* Shared lens-shutter transition — page navigation only. */
 .lens-shutter {
   position: fixed;
   inset: 0;
@@ -126,20 +163,29 @@
   background: radial-gradient(circle at 50% 50%, #241a12 0%, #1a140f 75%);
   animation: lensShutter 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
-
 @keyframes lensShutter {
-  0% {
-    clip-path: circle(0% at 50% 50%);
-  }
-  30% {
-    clip-path: circle(150% at 50% 50%);
-  }
-  55% {
-    clip-path: circle(150% at 50% 50%);
-  }
-  100% {
-    clip-path: circle(0% at 50% 50%);
-  }
+  0% { clip-path: circle(0% at 50% 50%); }
+  30% { clip-path: circle(150% at 50% 50%); }
+  55% { clip-path: circle(150% at 50% 50%); }
+  100% { clip-path: circle(0% at 50% 50%); }
+}
+
+/* Theme-switch overlay — a soft dip, not the white flash or the shutter
+   (those are reserved for their own actions). Masks the moment the
+   colors swap underneath, since CSS can't reliably animate a gradient
+   background changing directly. */
+.theme-fade {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  pointer-events: none;
+  background: #000;
+  animation: themeFade 0.4s ease-in-out forwards;
+}
+@keyframes themeFade {
+  0% { opacity: 0; }
+  50% { opacity: 0.35; }
+  100% { opacity: 0; }
 }
 
 @media (max-width: 700px) {
@@ -157,4 +203,5 @@
 @media (prefers-reduced-motion: reduce) {
   .camera-flash { animation: none; opacity: 0; }
   .lens-shutter { animation: none; clip-path: none; opacity: 0; }
+  .theme-fade { animation: none; opacity: 0; }
 }

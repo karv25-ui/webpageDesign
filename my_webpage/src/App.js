@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import KapturedMoment from './components/KapturedMoment.png';
 import Home from './components/Home';
 import Contact from './components/layout/Contact';
@@ -24,10 +25,29 @@ const FLASH_SWAP_MS = 350;
 // Shutter: fully-closed window is 30%–55% of its 900ms animation (see
 // @keyframes lensShutter in App.css) — 380ms sits comfortably inside it.
 const SHUTTER_SWAP_MS = 380;
+// Theme fade: peak-opacity is at 50% of its 400ms animation (see
+// @keyframes themeFade in App.css) — 200ms sits right at that peak.
+const THEME_FADE_MS = 200;
 
-function AppShell({ children, onLogoClick, onNavigate }) {
+const THEME_KEY = 'km-theme';
+
+function ThemeToggle({ theme, onToggle }) {
   return (
-    <div className="App">
+    <button
+      type="button"
+      className="theme-toggle"
+      onClick={onToggle}
+      aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+    >
+      {theme === 'dark' ? <FaSun /> : <FaMoon />}
+    </button>
+  );
+}
+
+
+function AppShell({ children, onLogoClick, onNavigate, theme, onToggleTheme }) {
+  return (
+    <div className="App" data-theme={theme}>
       <div className="background">
         <header className="header">
           <button
@@ -38,7 +58,10 @@ function AppShell({ children, onLogoClick, onNavigate }) {
           >
             <img src={KapturedMoment} alt="Kaptured Moment" className="logo" />
           </button>
-          <Nav onNavigate={onNavigate} />
+          <div className="header-right">
+            <Nav onNavigate={onNavigate} />
+            <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+          </div>
         </header>
 
         <div className="landing-page">{children}</div>
@@ -52,25 +75,33 @@ function AppShell({ children, onLogoClick, onNavigate }) {
 }
 
 function App() {
- const [showSplash, setShowSplash] = useState(() => {
-  const stored = sessionStorage.getItem('km-show-splash');
-  return stored === null ? true : stored === 'true';
-});
+  const [showSplash, setShowSplash] = useState(() => {
+    const stored = sessionStorage.getItem('km-show-splash');
+    return stored === null ? true : stored === 'true';
+  });
+  const [theme, setTheme] = useState(() => localStorage.getItem(THEME_KEY) || 'dark');
   const [flashKey, setFlashKey] = useState(0);
   const [shutterKey, setShutterKey] = useState(0);
+  const [themeFadeKey, setThemeFadeKey] = useState(0);
   const flashTimeout = useRef(null);
   const shutterTimeout = useRef(null);
+  const themeFadeTimeout = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    sessionStorage.setItem('km-show-splash', String(showSplash));
+  }, [showSplash]);
+
+  useEffect(() => {
+    localStorage.setItem(THEME_KEY, theme);
+  }, [theme]);
 
   useEffect(() => () => {
     clearTimeout(flashTimeout.current);
     clearTimeout(shutterTimeout.current);
+    clearTimeout(themeFadeTimeout.current);
   }, []);
-
-  useEffect(() => {
-  sessionStorage.setItem('km-show-splash', String(showSplash));
-}, [showSplash]);
 
   // Splash toggle only — header logo, splash's own logo.
   const runWithFlash = (action) => {
@@ -90,6 +121,14 @@ function App() {
     runWithFlash(() => setShowSplash((prev) => !prev));
   };
 
+  const toggleTheme = () => {
+    clearTimeout(themeFadeTimeout.current);
+    setThemeFadeKey((k) => k + 1);
+    themeFadeTimeout.current = setTimeout(() => {
+      setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    }, THEME_FADE_MS);
+  };
+
   const handleHeaderLogoClick = () => {
     runWithFlash(() => {
       navigate('/');
@@ -104,7 +143,10 @@ function App() {
 
   return (
     <>
-      <AppShell onLogoClick={handleHeaderLogoClick} onNavigate={handleNavigate}>
+      <AppShell 
+      onLogoClick={handleHeaderLogoClick}
+       onNavigate={handleNavigate} 
+       onThemeToggle={toggleTheme}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -120,6 +162,9 @@ function App() {
       )}
       {shutterKey > 0 && (
         <div key={shutterKey} className="lens-shutter" aria-hidden="true" />
+      )}
+       {themeFadeKey > 0 && (
+        <div key={themeFadeKey} className="theme-fade" aria-hidden="true" />
       )}
     </>
   );

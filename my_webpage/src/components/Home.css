@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@300;400;500&display=swap');
 
 .homepage {
-  --bg: #1a140f;
   --bg-alt: #241a12;
   --cream: #f3e9d8;
   --amber: #ff7a3d;
   --gold: #d4a054;
-  --muted: #a4907c;
+  
 
   display: flex;
   flex-direction: column;
@@ -15,13 +14,13 @@
   font-family: 'Work Sans', sans-serif;
 }
 
-.homepage[data-theme="light"] {
-  --bg: #f3e9d8;
-  --bg-alt: #e9dcc0;
-  --cream: #2a1f16;
-  --amber: #d9591a;
-  --gold: #a97a34;
-  --muted: #7a6a56;
+.App[data-theme="light"] .homepage-hero--custom-bg .hero-scrim {
+  background: linear-gradient(
+    180deg,
+    rgba(243, 233, 216, 0.55) 0%,
+    rgba(243, 233, 216, 0.8) 60%,
+    rgba(243, 233, 216, 0.55) 100%
+  );
 }
 
 .homepage-hero {
