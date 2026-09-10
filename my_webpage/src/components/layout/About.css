@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@300;400;500&display=swap');
 
 .about {
-  --bg: #1a140f;
-  --bg-alt: #241a12;
-  --cream: #f3e9d8;
-  --amber: #ff7a3d;
-  --gold: #d4a054;
-  --muted: #a4907c;
-
   max-width: 880px;
   margin: 0 auto;
   padding: 64px 32px 96px;

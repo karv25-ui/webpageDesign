@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@300;400;500&display=swap');
 
 .contact {
-  --bg: #1a140f;
-  --bg-alt: #241a12;
-  --cream: #f3e9d8;
-  --amber: #ff7a3d;
-  --gold: #d4a054;
-  --muted: #a4907c;
   --error: #e5573f;
 
   max-width: 720px;
@@ -336,13 +330,6 @@
 }
 
 .terms-modal {
-  --bg: #1a140f;
-  --bg-alt: #241a12;
-  --cream: #f3e9d8;
-  --amber: #ff7a3d;
-  --gold: #d4a054;
-  --muted: #a4907c;
-
   display: flex;
   flex-direction: column;
   width: 100%;

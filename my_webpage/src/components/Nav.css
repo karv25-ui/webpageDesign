@@ -1,14 +1,7 @@
 .nav {
-  --bg: #1a140f;
-  --cream: #f3e9d8;
-  --amber: #ff7a3d;
-  --gold: #d4a054;
-  --muted: #a4907c;
-
   position: relative;
   display: flex;
   align-items: center;
-  margin-left: auto;
 }
 
 .nav-menu {
