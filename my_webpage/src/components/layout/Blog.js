@@ -28,4 +28,21 @@
 * There will be rules and regulations for the user to follow when creating their blog. (ex. no hate speech, no nudity, etc.)
 * Once the user is satisfied with their blog, they can submit it for creating.
 * Mainly everything will be the same as the public publishing, but the only difference is that the user will not have admin access.
+
+* Make these blogs look like social media posts. 
+* I want it to have the vibe of MySpace, Tumblr & Threads. The way those apps funcition and just the aesthetic of those apps is how I want this blog section to look like 
+and operate. I want it to be a social media platform for blogs. I want it to be a place where people can share their thoughts and ideas with the world. I want it to be a place where people can connect with each other and have discussions about different topics. 
+I want it to be a place where people can express themselves freely and creatively. I want it to be a place where people can find inspiration and motivation from others. 
+I want it to be a place where people can learn from each other and grow together. 
+I want it to be a place where people can have fun and enjoy themselves. I want it to be a place where people can feel safe and comfortable. 
+I want it to be a place where people can be themselves and not have to worry about being judged or criticized.
+ I want it to be a place where people can feel like they belong and are part of a community. 
+ I want it to be a place where people can feel like they are making a difference in the world. 
+ I want it to be a place where people can feel like they are part of something bigger than themselves. 
+ I want it to be a place where people can feel like they are part of something special and unique. 
+ I want it to be a place where people can feel like they are part of something that is worth fighting for. 
+ I want it to be a place where people can feel like they are part of something that is worth living for.
+
+* I want the blogs to be like a journal or diary, a place where people can dump their thoughts, feelings or ideas. I want it to be a place where people can express themselves freely and creatively.
+  I want it to be a place where people can connect with each other and have discussions about different topics.
 */
