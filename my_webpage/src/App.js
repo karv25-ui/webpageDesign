@@ -144,9 +144,11 @@ function App() {
   return (
     <>
       <AppShell 
-      onLogoClick={handleHeaderLogoClick}
-       onNavigate={handleNavigate} 
-       onThemeToggle={toggleTheme}>
+        onLogoClick={handleHeaderLogoClick}
+        onNavigate={handleNavigate}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+        >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
