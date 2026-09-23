@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@300;400;500&display=swap');
+
+.blog {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 32px 96px;
+  color: var(--cream);
+  font-family: 'Work Sans', sans-serif;
+}
+
+.blog-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.blog-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+
+.blog-subtitle {
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 55ch;
+}
+
+.blog-feed {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.blog-empty {
+  padding: 40px;
+  text-align: center;
+  border: 1.5px dashed rgba(212, 160, 84, 0.4);
+  border-radius: 8px;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.post-card {
+  padding: 28px;
+  background: var(--bg-alt);
+  border: 1px solid rgba(212, 160, 84, 0.2);
+  border-radius: 12px;
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.post-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.post-mood {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  padding: 4px 12px;
+  border: 1px solid rgba(212, 160, 84, 0.3);
+  border-radius: 999px;
+}
+
+.post-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin: 0 0 16px;
+}
+
+.post-media {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.post-body p {
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--cream);
+  margin: 0 0 14px;
+}
+.post-body p:last-child {
+  margin-bottom: 0;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+.post-tags li {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--gold);
+}
+
+@media (max-width: 480px) {
+  .blog {
+    padding: 40px 20px 72px;
+  }
+  .post-card {
+    padding: 20px;
+  }
+  .blog-feed {
+    gap: 20px;
+  }
+}

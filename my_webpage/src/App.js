@@ -5,6 +5,7 @@ import KapturedMoment from './components/KapturedMoment.png';
 import Home from './components/Home';
 import Contact from './components/layout/Contact';
 import About from './components/layout/About';
+import Blog from './components/layout/Blog';
 import Nav from './components/Nav';
 import EntranceSplash from './components/EntranceSplash';
 import './App.css';
@@ -154,6 +155,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
       </AppShell>
 

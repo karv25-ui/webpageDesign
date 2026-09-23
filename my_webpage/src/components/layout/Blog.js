@@ -46,3 +46,90 @@ I want it to be a place where people can be themselves and not have to worry abo
 * I want the blogs to be like a journal or diary, a place where people can dump their thoughts, feelings or ideas. I want it to be a place where people can express themselves freely and creatively.
   I want it to be a place where people can connect with each other and have discussions about different topics.
 */
+
+import './Blog.css';
+
+// ---- Journal posts — personal only, manually maintained ----
+// Add a new entry to the TOP of this array whenever you want to post.
+// `mood` and `tags` are optional — leave either out and that part just
+// won't render. `body` can be multiple paragraphs — separate them with a
+// blank line and each becomes its own paragraph. For an image, import it
+// the same way we've done elsewhere (About.js self-portraits, Home.js
+// background) to avoid a broken-import build error:
+//   import post1Image from './journal/post1.jpg';
+// then: media: { type: 'image', src: post1Image }
+const POSTS = [
+  // {
+  //   date: 'September 2026',
+  //   title: 'Post title',
+  //   mood: 'inspired',
+  //   tags: ['photography', 'behind-the-scenes'],
+  //   body: `First paragraph.
+  //
+  // Second paragraph.`,
+  //   media: null,
+  // },
+];
+
+function PostBody({ body }) {
+  const paragraphs = body.split(/\n\s*\n/);
+  return paragraphs.map((p, i) => <p key={i}>{p.trim()}</p>);
+}
+
+function PostCard({ post }) {
+  return (
+    <article className="post-card">
+      <div className="post-meta">
+        <span className="post-date">{post.date}</span>
+        {post.mood && <span className="post-mood">current mood: {post.mood}</span>}
+      </div>
+
+      <h2 className="post-title">{post.title}</h2>
+
+      {post.media?.type === 'image' && (
+        <img src={post.media.src} alt="" className="post-media" />
+      )}
+
+      <div className="post-body">
+        <PostBody body={post.body} />
+      </div>
+
+      {post.tags?.length > 0 && (
+        <ul className="post-tags">
+          {post.tags.map((tag) => (
+            <li key={tag}>#{tag}</li>
+          ))}
+        </ul>
+      )}
+    </article>
+  );
+}
+
+function Blog() {
+  return (
+    <div className="blog">
+      <section className="blog-intro">
+        <p className="blog-eyebrow">The Journal</p>
+        <h1 className="blog-title">
+          Thoughts, Behind the Scenes &amp; Everything In Between!
+        </h1>
+        <p className="blog-subtitle">
+          A running log of what's on my mind — the creative process, life
+          behind the lens, and whatever else feels worth writing down.
+        </p>
+      </section>
+
+      <section className="blog-feed">
+        {POSTS.length === 0 ? (
+          <div className="blog-empty">
+            No posts yet — Entries will appear here once they are published. Check back soon!
+          </div>
+        ) : (
+          POSTS.map((post, i) => <PostCard post={post} key={i} />)
+        )}
+      </section>
+    </div>
+  );
+}
+
+export default Blog;
