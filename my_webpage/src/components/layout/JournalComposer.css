@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@300;400;500&display=swap');
+
+.composer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 32px 96px;
+  color: var(--cream);
+  font-family: 'Work Sans', sans-serif;
+}
+
+.composer-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.composer-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  margin: 0 0 16px;
+}
+
+.composer-subtitle {
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 60ch;
+}
+.composer-subtitle code {
+  color: var(--amber);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85em;
+}
+
+.composer-form {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.composer-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.composer-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.composer-field label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.composer-field label code {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.composer-field input,
+.composer-field textarea {
+  background: var(--bg-alt);
+  border: 1px solid rgba(212, 160, 84, 0.3);
+  border-radius: 6px;
+  padding: 12px 14px;
+  color: var(--cream);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1rem;
+}
+.composer-field input:focus,
+.composer-field textarea:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+
+.composer-output {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(212, 160, 84, 0.15);
+}
+
+.composer-output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.composer-output-header h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.composer-copy {
+  padding: 8px 20px;
+  background: linear-gradient(135deg, var(--amber), var(--gold));
+  color: var(--bg);
+  border: none;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.composer-copy:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.composer-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.composer-note code {
+  color: var(--amber);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.composer-pre {
+  background: var(--bg-alt);
+  border: 1px solid rgba(212, 160, 84, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  overflow-x: auto;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--cream);
+}
+
+@media (max-width: 480px) {
+  .composer { padding: 40px 20px 72px; }
+  .composer-row { grid-template-columns: 1fr; }
+}

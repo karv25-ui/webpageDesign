@@ -8,6 +8,7 @@ import About from './components/layout/About';
 import Blog from './components/layout/Blog';
 import Nav from './components/Nav';
 import EntranceSplash from './components/EntranceSplash';
+import JournalComposer from './components/layout/JournalComposer';
 import './App.css';
 
 // Placeholders until Portfolio.js / Contact.js are wired in.
@@ -155,6 +156,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/journal-compose" element={<JournalComposer />} />
           <Route path="/blog" element={<Blog />} />
         </Routes>
       </AppShell>
